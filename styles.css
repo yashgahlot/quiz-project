@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #b43535, #2d0707);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -42,14 +42,14 @@ body {
     font-size: 1.25rem;
     padding: 12px 25px;
     border-radius: 8px;
-    background-color: #007bff;
+    background-color: #951f1f;
     color: white;
     border: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #start-quiz-btn:hover {
-    background-color: #0056b3;
+    background-color: #3ab646;
     transform: scale(1.05);
 }
 
@@ -107,7 +107,7 @@ body {
 /* Button Styling */
 .btn-primary {
     padding: 12px 25px;
-    background-color: #007bff;
+    background-color: #c03a3a;
     color: white;
     border: none;
     border-radius: 8px;
@@ -119,7 +119,7 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #3ab646;
     transform: scale(1.05);
 }
 
