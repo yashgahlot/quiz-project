@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <title>Professional Quiz App</title>
+</head>
+<body>
+    <div class="container">
+        <div id="welcome-container">
+            <h1>Welcome to Flashlearn!</h1>
+            <p>Test your knowledge with this quick quiz. Ready?</p>
+            <button id="start-quiz-btn" class="btn-primary">Start Quiz</button>
+        </div>
+
+        <div id="quiz-container" class="hide">
+            <div id="progress">
+                <div id="progress-bar"></div>
+            </div>
+            
+            <div id="question-container" class="hide">
+                <h3 id="question"></h3>
+                <div id="answer-buttons"></div>
+            </div>
+            <button id="next-btn" class="btn-primary hide">Next Question</button>
+            <div id="result" class="hide"></div>
+            <button id="restart-btn" class="btn-primary hide">Restart Quiz</button>
+        </div>
+    </div>
+</body>
+</html>
