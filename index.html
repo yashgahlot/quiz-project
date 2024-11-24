@@ -1,33 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
-    <title>Professional Quiz App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainBolt - Quiz Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div id="welcome-container">
-            <h1>Welcome to Brainbolt!</h1>
-            <p>Test your General Knowledge</p>
-            <button id="start-quiz-btn" class="btn-primary">Start Quiz</button>
+    <div id="app">
+        <!-- Welcome Page -->
+        <div id="welcome-page" class="page active">
+            <h1 id="welcome-heading">Welcome to BrainBolt</h1>
+            <div>
+                <input type="text" id="name-input" placeholder="Enter your name" />
+                <button onclick="updateWelcomeMessage()">Submit</button>
+            </div>
         </div>
 
-        <div id="quiz-container" class="hide">
+        <!-- Quiz List Page -->
+        <div id="quiz-list-page" class="page">
+            <h1>Select a Quiz</h1>
+            <ul>
+                <li><button onclick="startQuiz('math')">Math Quiz</button></li>
+                <li><button onclick="startQuiz('science')">Science Quiz</button></li>
+                <li><button onclick="startQuiz('general')">General Knowledge</button></li>
+                <li><button onclick="startQuiz('history')">History Quiz</button></li>
+            </ul>
+            <button onclick="showHome()">Back to Home</button>
+        </div>
+
+        <!-- Quiz Page -->
+        <div id="quiz-page" class="page">
+            <h1 id="quiz-title"></h1>
+            <p id="progress-tracker">Question 1 of 4</p>
             <div id="progress">
                 <div id="progress-bar"></div>
             </div>
-            
-            <div id="question-container" class="hide">
-                <h3 id="question"></h3>
-                <div id="answer-buttons"></div>
+            <div id="question-container">
+                <p id="question-text"></p>
+                <div id="options-container"></div>
+                <p id="timer">Time left: <span id="time-left"></span>s</p>
             </div>
-            <button id="next-btn" class="btn-primary hide">Next Question</button>
-            <div id="result" class="hide"></div>
-            <button id="restart-btn" class="btn-primary hide">Restart Quiz</button>
+            <button onclick="restartQuiz()">Restart Quiz</button>
+            <button onclick="showHome()">Home</button>
+        </div>
+
+        <!-- Results Page -->
+        <div id="results-page" class="page">
+            <h1>Your Results</h1>
+            <p id="results"></p>
+            <button onclick="showLeaderboard()">View Leaderboard</button>
+            <button onclick="showHome()">Back to Home</button>
+        </div>
+
+        <!-- Leaderboard Page -->
+        <div id="leaderboard-page" class="page">
+            <h1>Leaderboard</h1>
+            <ul id="leaderboard-list"></ul>
+            <button onclick="showHome()">Back to Home</button>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

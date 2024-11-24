@@ -6,170 +6,424 @@
 }
 
 body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to right, #b43535, #2d0707);
-    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: #333;
 }
 
-/* Container Styling */
-.container {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+#app {
     text-align: center;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Welcome Page Styling */
-#welcome-container h1 {
+/* Welcome Page */
+#welcome-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#welcome-page h1 {
     font-size: 2.5rem;
     color: #333;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 }
 
-#welcome-container p {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 2rem;
-}
-
-#start-quiz-btn {
-    font-size: 1.25rem;
-    padding: 12px 25px;
+#name-input {
+    margin: 20px 0;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #951f1f;
-    color: white;
-    border: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 80%;
+    max-width: 300px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#start-quiz-btn:hover {
+#name-input + button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #56ab2f;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#name-input + button:hover {
     background-color: #3ab646;
     transform: scale(1.05);
 }
 
-/* Quiz Content Styling */
-#quiz-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+/* Button Styling */
+button {
+    margin: 10px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    background: #6200ea;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+button:hover {
+    background: #3700b3;
+    transform: scale(1.05);
+}
+
+/* Page Styling */
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Quiz List Page */
+#quiz-list-page h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#quiz-list-page ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#quiz-list-page ul li button {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    background: #6c63ff;
+}
+
+#quiz-list-page ul li button:hover {
+    background: #534eb6;
+}
+
+#quiz-list-page button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#quiz-list-page button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+/* Quiz Page */
+#quiz-page h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 #question-container {
     text-align: left;
-    transition: opacity 0.5s ease;
+    margin-bottom: 20px;
 }
 
-#question {
-    font-size: 1.8rem;
+#question-text {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+#options-container button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 1.1rem;
+    background: #f4f4f9;
     color: #333;
-    margin-bottom: 1.5rem;
-}
-
-#answer-buttons {
-    display: flex;
-    flex-direction: column; /* Align options vertically */
-    gap: 1rem;
-}
-
-.input-group {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
-    background-color: #f8f9fb;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    width: 100%; /* Ensures consistent width */
-    border: 1px solid #e0e0e0;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.input-group:hover {
-    background-color: #e3efff;
+#options-container button:hover {
+    background: #ffeaa7;
     transform: scale(1.02);
 }
 
-.input-group input {
-    margin-right: 15px;
-}
-
-.input-group label {
-    font-size: 1.1rem;
+/* Timer Styling */
+#timer {
+    font-size: 1.2rem;
+    margin-top: 20px;
     color: #333;
+    font-weight: bold;
 }
 
-/* Button Styling */
-.btn-primary {
+/* Results Page */
+#results-page h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#results {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#results-page button {
+    background: linear-gradient(135deg, #56ab2f, #a8e063);
+}
+
+#results-page button:hover {
+    background: linear-gradient(135deg, #3ab646, #56ab2f);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    #app {
+        padding: 20px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+/* Input and Submit Button Container */
+#welcome-page div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between input and button */
+}
+
+#name-input {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 70%; /* Adjust width to fit next to the button */
+    max-width: 300px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#name-input + button {
     padding: 12px 25px;
-    background-color: #c03a3a;
-    color: white;
+    font-size: 1rem;
     border: none;
     border-radius: 8px;
-    font-size: 1.25rem;
+    background-color: #56ab2f;
+    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    width: fit-content;
-    margin: 0 auto;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    white-space: nowrap; /* Prevent the text from wrapping */
 }
 
-.btn-primary:hover {
+#name-input + button:hover {
     background-color: #3ab646;
     transform: scale(1.05);
 }
 
-/* Progress Bar */
 #progress {
     width: 100%;
     height: 8px;
     background: #e0e0e0;
     border-radius: 5px;
-    margin-top: 1rem;
+    margin: 20px 0;
+    overflow: hidden;
 }
 
 #progress-bar {
     height: 100%;
     width: 0;
-    background: #007bff;
+    background: #6200ea;
+    transition: width 0.3s ease;
     border-radius: 5px;
-    transition: width 0.5s ease;
 }
 
-/* Hiding Elements */
-.hide {
-    display: none;
-}
-
-/* Result Section */
-#result {
-    font-size: 1.5rem;
+#progress-tracker {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
     color: #333;
-    font-weight: bold;
-    margin-top: 2rem;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .container {
-        max-width: 90%;
-        padding: 15px;
-    }
+#leaderboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    text-align: left;
+}
 
-    #question-container h3 {
-        font-size: 1.5rem;
-    }
+#leaderboard-list li {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    #start-quiz-btn, #next-btn, #restart-btn {
-        font-size: 1.1rem;
-        padding: 10px 20px;
-    }
+/* Theme Toggle Button */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
 
-    #result {
-        font-size: 1.25rem;
-    }
+.theme-toggle:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+/* Dark Mode Styling */
+body.dark-mode {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af); /* Dark background gradient */
+    color: #f4f4f4; /* Light text color */
+}
+
+/* App Container in Dark Mode */
+body.dark-mode #app {
+    background-color: #333; /* Dark background for the app container */
+    color: #fff; /* Light text color for all content inside the app */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Buttons in Dark Mode */
+body.dark-mode button {
+    background-color: #444; /* Dark button background */
+    color: #fff; /* Light text color for buttons */
+    border: none;
+}
+
+body.dark-mode button:hover {
+    background-color: #555; /* Slightly lighter hover effect */
+}
+
+/* Input Fields in Dark Mode */
+body.dark-mode input[type="text"] {
+    background-color: #555; /* Dark background for input fields */
+    color: #fff; /* Light text color for input */
+    border: 1px solid #444; /* Darker border for input fields */
+}
+
+body.dark-mode input[type="text"]::placeholder {
+    color: #ccc; /* Light placeholder text */
+}
+
+/* Progress Bar in Dark Mode */
+body.dark-mode #progress {
+    background-color: #444; /* Dark background for the progress container */
+}
+
+body.dark-mode #progress-bar {
+    background-color: #4ca1af; /* Light accent color for progress bar */
+}
+
+/* Headings in Dark Mode */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6 {
+    color: #f4f4f4; /* Ensure all headings are visible */
+}
+
+/* Leaderboard List in Dark Mode */
+body.dark-mode #leaderboard-list {
+    color: #f4f4f4; /* Light text color for leaderboard */
+}
+
+body.dark-mode #leaderboard-list li {
+    background-color: #444; /* Dark background for leaderboard items */
+    color: #fff; /* Light text for leaderboard names */
+    border: 1px solid #555; /* Subtle border for leaderboard items */
+}
+
+/* Results Page in Dark Mode */
+body.dark-mode #results-page {
+    color: #f4f4f4; /* Light text color for results */
+}
+
+body.dark-mode #results {
+    color: #f4f4f4; /* Ensure results text is visible */
+}
+
+/* Welcome Page in Dark Mode */
+body.dark-mode #welcome-page h1 {
+    color: #f4f4f4; /* Light text color for the welcome heading */
+}
+
+body.dark-mode #welcome-page #name-input {
+    background-color: #555; /* Dark background for name input */
+    color: #fff; /* Light text for input value */
+    border: 1px solid #666; /* Subtle border */
+}
+
+body.dark-mode #welcome-page #name-input::placeholder {
+    color: #aaa; /* Light placeholder text */
+}
+
+/* Timer Styling in Dark Mode */
+body.dark-mode #timer {
+    color: #f4f4f4; /* Light text color for "Time Left" */
+    font-weight: bold; /* Ensure it stands out */
+}
+
+body.dark-mode #time-left {
+    color: #ffab00; /* Bright yellow color for the countdown number */
+    font-weight: bold; /* Highlight the time */
 }
