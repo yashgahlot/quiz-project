@@ -171,10 +171,21 @@ function showResults() {
     `;
 }
 
-// Restart the current quiz
+
 function restartQuiz() {
-    startQuiz(currentQuiz);
+    if (confirm("Are you sure you want to restart the quiz? Your progress will be lost.")) {
+        if (currentQuiz) {
+            currentQuestionIndex = 0; // Reset to the first question
+            score = 0; // Reset the score
+            hintUsed = false; // Reset hint usage
+            timeLeft = currentQuiz.length > 0 ? 10 : 15; // Reset the timer to default
+            loadQuestion(); // Reload the first question
+        } else {
+            alert("No quiz to restart!"); // Fallback if no quiz is selected
+        }
+    }
 }
+
 
 // Reset the quiz data
 function resetQuiz() {
